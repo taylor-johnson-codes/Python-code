@@ -1,0 +1,18 @@
+age = input("What is your age?")  # asking user for their age; user input is always a string
+age = float(age)  # converting string to float
+print("Your age is: ", age)
+
+newage = age + 10  # able to add numbers together; can't add a string and number together
+print("In 10 years you will be", newage)
+
+#################################################################################
+
+my_str = 'Hello Taylor'
+
+try:
+    my_str = float(my_str)  # attempting to convert string into float
+    # if it works, 'It worked' will print and the except block will be skipped
+    print('It worked')
+
+except:
+    print('Cannot convert')  # if unable to convert string to float, this error message will print
