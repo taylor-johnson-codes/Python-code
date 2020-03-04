@@ -1,0 +1,109 @@
+# if statement
+
+x=42
+if x>1:
+    print('MORE THAN ONE')  # this prints because this is true
+if x<100:
+    print('LESS THAN 100')  # this prints because this is true
+print('ALL DONE')  # this prints no matter what because it's outside of the if statements
+
+##########################################################################################
+
+# if statement
+
+cond1 = True
+cond2 = False
+if cond1:  # since cond1 is True, this if statement will execute (Point B will print) plus the next (nested) if statement will run
+    if cond2:  # since cond2 is False, the next line of this if statement will NOT run
+        print("Point A")  # this will NOT print
+    print("Point B")  # this will print
+print("Point C")  # this prints no matter what because it's outside of the if statements
+
+##########################################################################################
+
+# if else statement
+
+x=50
+if x>100:  # the next line will be skipped since 50 is not greater than 100
+    print('MORE THAN 100')
+else:  # the else statement isn't comparing anything; it's going to run only if all previous if statements are false/don't run
+    print('LESS THAN 100')  # this will print
+print('ALL DONE')  # this prints no matter what because it's outside of the if statement
+
+##########################################################################################
+
+# if else statement
+
+cond1 = True
+if cond1:
+    print("Point A")  # prints
+else:
+    print("Point B")  # doesn't print
+print("Point C")  # prints
+
+##########################################################################################
+
+# if elif statement (else is optional)
+
+cond1 = False
+cond2 = True
+cond3 = True
+if cond1:
+    print("Point A")  # doesn't print
+elif cond2:
+    print("Point B")  # prints
+    print("Point C")  # doesn't print because when it finds the action to print Point B it skips the rest of the statement and moves onto the next statement
+print("Point D")  # prints no matter what because it's outside of the if statement
+
+##########################################################################################
+
+# if elif else statement
+
+x=1
+if x>1:
+    print('MORE THAN ONE')  # doesn't print
+elif x<1:
+    print('LESS THAN ONE')  # doesn't print
+elif x==1:
+    print('X is 1')  # prints
+else:  # doesn't run the else statement because it found something to be true before getting to else
+    print('error')  # doesn't print
+    
+##########################################################################################    
+    
+# if elif else statement
+
+cond1 = False
+cond2 = False
+cond3 = False
+if cond1:
+    print("Point A")  # doesn't print
+elif cond2:
+    print("Point B")  # doesn't print
+elif cond3:
+    print("Point C")  # doesn't print
+else:
+    print("Point D")  # prints
+print("Point E")  # prints no matter what because it's outside of the if statement
+
+##########################################################################################
+
+# Grade conversion from number to letter with if statements
+
+try:
+    num_grade=input("What is your number grade?")
+    num_grade=float(num_grade)
+    if num_grade>=90:
+        let_grade="A"
+    elif num_grade>=80:
+        let_grade="B"
+    elif num_grade>=70:
+        let_grade="C"
+    elif num_grade>=60:
+        let_grade="D"
+    elif num_grade>=0:
+        let_grade="F"
+    print("Your letter grade is", let_grade)
+
+except:
+    print("You didn't enter a valid number grade")
