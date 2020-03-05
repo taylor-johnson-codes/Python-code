@@ -1,0 +1,117 @@
+# Fruitful vs fruitless: fruitful if function contains a return statement; fruitless/void if function doesn't contain a return statement
+
+# def is the syntax for creating a new function
+# gcd is our new function for greatest common denominator
+# a and b are the two parameters we'll use later
+# the body of the function needs to be indented (4 spaces is an indent); if there are functions within functions indenting keeps happening
+
+def gcd(a, b):
+    while (b != 0):  # NOT equal to zero because you can't divide by zero; if b is zero it will skip all of the indented code
+        temp = a  # value of a is going into a temporary value
+        a = b  # because the greatest common denominator will be the same number
+        b = temp % b  # modulo gives remainder only
+        # if b is zero this loop will stop and the next step (return) will occur
+        # the step-by-step math of this Euclid Algorithm is explained here: https://www.youtube.com/watch?v=JUzYl1TYMcU
+    return a
+
+# testing the function:
+print(gcd(60, 96))  # the result that returns is 12
+print(gcd(20, 8))  # the result that returns is 4
+
+##########################################################################################
+
+def ex1(cond1,cond2):
+    if cond1:
+        if cond2:
+            print("Point A")  # this does NOT print
+        print("Point B")  # this prints
+    print("Point C")  # this prints
+
+ex1(True,False)  # calling the ex1 function and passing in cond1 and cond2 parameters
+
+##########################################################################################
+
+# function to get user input and convert number grade into letter grade
+
+def grade(lg,ng):
+    lg = ''  # need to initialize str letter grade to use the variable later in the function (setting to an empty str to start)
+try:
+    ng=input("What is your number grade?")
+    ng=float(ng)  # have to change the input str to a numerical data type
+    if ng>=90:
+        lg="A"
+    elif ng>=80:
+        lg="B"
+    elif ng>=70:
+        lg="C"
+    elif ng>=60:
+        lg="D"
+    elif ng>=0:
+        lg="F"
+    print("Your letter grade is", lg)
+except:
+    print("You didn't enter a valid number grade")
+    
+##########################################################################################
+    
+# Overtime pay function
+
+def computepay(hours, pay):
+    if hours<=40:
+        return pay*hours
+    elif hours>40:
+        return (40*pay)+(OThours*OTpay)
+
+hours = input('How many hours did you work this week? ')
+pay = input('What is your hourly rate? ')
+OThours = hours-40
+OTpay = pay*1.5
+totalpay = computepay(hours, pay)
+
+try:
+    hours=float(hours)
+    pay=float(pay)
+except:
+    print("You must enter a valid number")
+    input("Press enter to exit")
+    exit()
+
+print('Your total pay for the week is $', totalpay)
+
+# Or
+# print(f'Your total pay for the week is ${totalpay}')
+
+##########################################################################################
+
+# None prints for the third parameter because it's a fruitless/void function that doesn't have any actions coded it
+
+def ex1(cond1, cond2, cond3):
+    if cond1:
+        print("Point A")
+    elif cond2:
+        print("Point B")
+    elif cond3:
+        print("Point C")
+    else:
+        print("Point D")
+    print("Point E")
+
+# Test commands:
+
+print(ex1(True,True,True))
+# prints:
+# Point A
+# Point E
+# None
+
+print(ex1(False,False,False))
+# prints:
+# Point D
+# Point E
+# None
+
+print(ex1(False,True,False))
+# prints:
+# Point B
+# Point E
+# None
