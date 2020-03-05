@@ -1,0 +1,185 @@
+# concatentating strings
+
+prompt = "What is your name?"
+name = input(prompt)
+state = 'Your name is '
+print(state + name)
+# OR 
+# print(state,name); comma acts as a space
+
+############################################################
+
+# concatentating strings (more efficient)
+
+name = input("What is your name?")
+print("Your name is",name)
+
+############################################################
+
+# example of zero index numbering
+
+myname = "Taylor Johnson"
+firstletter = myname[0]
+print(firstletter)  # prints T
+
+############################################################
+
+# length function (length does NOT use zero index)
+
+myname = "Taylor Johnson"
+print(len(myname))  # prints 14
+
+############################################################
+
+# printing last character in string
+
+myname = "Taylor Johnson"
+
+print(len(myname)-1)  # prints 13 to show 13 is the last index position in the string
+# copy/paste this into the next statement to return the last item in the string
+
+print(myname[len(myname)-1])  # prints n
+
+# Or since you know the last index position is 13...
+print(myname[13])  # prints n
+
+############################################################
+
+# while loop to print each character in string
+
+myname = "Taylor Johnson"
+length = len(myname)
+position = 0
+while position < length:
+    print(myname[position])
+    position=position+1
+# loops thru all the letters in the string and prints one letter on each line
+
+############################################################
+
+# doing the same wtih a for loop (more simplified than the while loop)
+
+myname = "Taylor Johnson"
+for letter in myname:
+    print(letter)
+# loops thru all the letters in the string and prints one letter on each line
+
+############################################################
+  
+# counting how many times the letter 'a' is in the string
+
+fruit = 'banana'
+count = 0
+for letter in fruit:
+    if letter == 'a':
+        count = count + 1
+print(count)  # prints 3
+
+############################################################
+
+# slicing to pull out parts of a string
+
+myname = "Taylor Johnson"
+part1 = myname[2:5]
+# use : to get range; returns up to but not including 5 so slicing stops one before its ending number
+print(part1)  # prints ylo
+
+# can leave beginning or end of range blank to go from the beginning or to the end of string
+part2 = myname[:5]
+print(part2)  # prints Taylo
+
+part3 = myname[10:]
+print(part3)  # prints nson
+
+############################################################
+
+# slicing to extract items out of a string to become individual variables
+
+myname = "Taylor Johnson"
+blankposition = 6  # index of space
+firstname = myname[:blankposition]
+lastname = myname[blankposition + 1:]
+print(firstname, lastname)  # comma in Python adds a space
+# prints Taylor Johnson
+
+############################################################
+
+# changing to all lower case
+
+myname = "Taylor Johnson"
+lowername = myname.lower()  # .lower() is a built-in method
+print(lowername)  # prints taylor johnson
+
+# OR
+myname = "Taylor Johnson"
+print(myname.lower())  # prints taylor johnson
+
+############################################################
+
+# changing to all upper case
+
+myname="Taylor Johnson"
+uppername=myname.upper()
+print(uppername)  # prints TAYLOR JOHNSON
+
+# OR
+myname="Taylor Johnson"
+print(myname.upper())  # prints TAYLOR JOHNSON
+
+############################################################
+
+# find position of blank space with .find() method
+
+myname="Taylor Johnson"
+myname.find(" ")  # returns 6, the index position of the s
+
+############################################################
+
+# find position of blank space in myname and test for equality
+
+myname = "Taylor Johnson"
+blankposition = 6  # index of space
+
+blankposition2 = myname.find(" ")
+print(blankposition == blankposition2)  # prints True
+
+############################################################
+
+# returns True if name ends with 'sen' or 'son'
+
+def check(name):  # remember def is syntax for creating your own function
+    result = name.endswith('son') or name.endswith('sen')
+    return result
+
+print(check("Johnson"))  # prints True
+print(check("Smith"))  # prints False
+print(check("Andersen"))  # prints True
+
+############################################################
+
+# once a string is created the value can't be changed
+
+s = 'abc'
+s[0] = "A"
+print(s)  # returns TypeError because you can't change the 'a' to 'A'
+
+############################################################
+
+# but we CAN change a string with concatenating!
+# doesn't change the original string value; it assigns a brand new value to the same variable name
+
+s = 'abc'
+s = "A" + s[1:]
+print(s)  # prints Abc
+
+############################################################
+
+# build a string of all the vowels in the original string
+
+x = 'Use this as the original str'
+vowels = "aeiouAEIOU"
+result = ""  # saying the result variable will be a str
+for item in x:
+    if item in vowels:
+        result=result+item
+print(result)  # prints Ueiaeoiia
