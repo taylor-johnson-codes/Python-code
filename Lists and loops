@@ -1,0 +1,357 @@
+# indefinite loop if break statement isn't there
+
+while True:
+    userstr = input("Provide an interger")
+    try:
+        userint = int(userstr)
+        break
+    except:
+        print("Try again with an interger")
+print("Success! Your interger is", userint)
+
+#################################################################################
+
+# Lists: you can have different data types (i.e. str and int) in a list; Python knows the data type w/o you telling it
+
+mylist = ["Tom", "Sally", 3]
+print(mylist[0])  # prints Tom
+print(mylist[1])  # prints Sally
+print(mylist[2])  # prints 3
+type(mylist)  # prints list
+
+#################################################################################
+
+# finding the average number in a list with sum() and len() functions
+
+def avg(number):
+    return sum(number) / len(number)
+
+mylist = [1,2,3,4]
+
+print(avg(mylist))  # prints 2.5
+
+#################################################################################
+
+# creating your own sum() and len() functions
+
+def avg(some_list):
+    total=0
+    length=0
+    for item in some_list:
+        total = total + item
+        length = length + 1
+    the_avg = total/length
+    return the_avg
+
+testlist = [1,2,3,4]
+
+print(avg(testlist))  # prints 2.5
+
+#################################################################################
+
+# return only odd numbers in list
+
+def oddfunc(parameter):
+    for item in parameter:
+        if item%2 != 0:
+            print(item)
+
+mylist = [1,2,3,4]
+
+oddfunc(mylist)  # prints 1 and 3
+
+#################################################################################
+
+# finding the average of the odd numbers in the list
+
+def oddfunc(parameter):
+    sum=0  # initializing variable that we need later
+    count=0  # initializing variable that we need later
+    for item in parameter:
+        if item%2 != 0:
+            sum = sum + item
+            count = count + 1
+    avg = sum/count
+    return avg
+
+mylist = [1,2,3,4]
+
+print(oddfunc(mylist))  # prints 2
+
+#################################################################################
+
+# creating our own max() function (finding largest number in list)
+
+testlist = [1, -5, 16, 76, 127, 4]
+
+def largest(some_list):
+    big = some_list[0]  # initializing big to the first number in the list instead of just picking a random number like zero
+    for item in some_list:
+        if item > big:
+            big = item
+    return big
+
+print(largest(testlist))  # prints 127
+
+#################################################################################
+
+# for loop example
+
+total = 0
+
+for item in range(5):
+    x = item + 1
+    total = total + x
+    print(x)
+
+print(total)  # prints 0 through 4 (remember range returns up to but not including the specified number)
+
+#################################################################################
+
+# print sum of 500 integers in a for loop using range
+
+total = 0
+
+for number in range(1,501):
+    total = number + total
+
+print(total)  # prints 125250
+
+#################################################################################
+
+# basic list
+
+westcoast = ["AK", "WA", "OR", "CA"]
+print (westcoast)  # prints ['AK', 'WA', 'OR', 'CA']
+
+#################################################################################
+
+# for loop to itirate thru the list
+
+westcoast = ["AK", "WA", "OR", "CA"]
+for state in westcoast:
+    print (state)  # prints AK, WA, OR, CA on separate lines
+    
+#################################################################################    
+    
+# print the second element in the list
+
+westcoast = ["AK", "WA", "OR", "CA"]
+print(westcoast[1])  # prints WA
+
+#################################################################################
+
+# print length of list
+
+westcoast = ["AK", "WA", "OR", "CA"]
+print(len(westcoast))  # prints 4
+
+#################################################################################
+
+# use dir() function to see the options of what you can do with your list
+
+westcoast = ["AK", "WA", "OR", "CA"]
+dir(westcoast)
+
+#################################################################################
+
+# range
+
+x = range(5)
+print(x)  # prints range(0, 5)
+print(len(x))  # prints 5
+
+#################################################################################
+
+# print list, type, and range
+
+westcoast = ["AK", "WA", "OR", "CA"]
+print(westcoast)  # prints ['AK', 'WA', 'OR', 'CA']
+print(type(westcoast))  # prints <class 'list'>
+print(range(len(westcoast)))  # prints range(0, 4)
+print(type(range(4)))  # prints <class 'range'>
+
+#################################################################################
+
+# concatenating lists
+
+westcoast = ["AK", "WA", "OR", "CA"]
+opp_corner = ['FL', 'GA', 'SC']
+print(westcoast + opp_corner)  
+# prints ['AK', 'WA', 'OR', 'CA', 'FL', 'GA', 'SC']
+
+# Or create a third variable:
+
+westcoast = ["AK", "WA", "OR", "CA"]
+opp_corner = ['FL', 'GA', 'SC']
+two_corners = westcoast + opp_corner
+print(two_corners)  
+# prints ['AK', 'WA', 'OR', 'CA', 'FL', 'GA', 'SC']
+
+#################################################################################
+
+# add NC to list
+
+westcoast = ["AK", "WA", "OR", "CA"]
+opp_corner = ['FL', 'GA', 'SC']
+two_corners = westcoast + opp_corner
+two_corners.append('NC')
+print(two_corners)
+# prints ['AK', 'WA', 'OR', 'CA', 'FL', 'GA', 'SC', 'NC']
+
+#################################################################################
+
+# insert AL between CA and FL
+
+westcoast = ["AK", "WA", "OR", "CA"]
+opp_corner = ['FL', 'GA', 'SC']
+two_corners = westcoast + opp_corner
+two_corners.append('NC')
+two_corners.insert(4, "AL")  # insert the index number of what index you want the new item to be
+print(two_corners)
+# prints ['AK', 'WA', 'OR', 'CA', 'AL', 'FL', 'GA', 'SC', 'NC']
+
+#################################################################################
+
+# p, q, r are boolean variables; print out every possible combo of the three
+
+bool = [True, False]
+for p in bool:
+    for q in bool:
+        for r in bool:
+            print(p,q,r)
+
+# prints:
+# True True True
+# True True False
+# True False True
+# True False False
+# False True True
+# False True False
+# False False True
+# False False False
+
+#################################################################################
+
+# use randint() to get a random int between 0-100
+
+import random  # importing the built-in random class to be able to use its random functions
+x = random.randint(0,100)
+print(x)
+# each time you run the code it prints a different number between 0-100
+
+#################################################################################
+
+# use randint() to create a list of 20 random ints between 0-100
+
+import random
+randlist = []
+for item in range(20):
+    randlist.append(random.randint(0,100))
+print(randlist)
+# prints a list of 20 random numbers between 0-100
+
+#################################################################################
+
+# sort and print the random list
+
+import random
+randlist = []
+for item in range(20):
+    randlist.append(random.randint(0,100))
+randlist.sort()
+print(randlist)
+# prints a list of 20 random numbers between 0-100 in ascending order
+
+#################################################################################
+
+# function HowManyAinB has two parameters: (1) a single object of any data type; (2) a list
+# function returns the number of times the single object is found in the list
+
+def HowManyAinB (value, list):
+    count = 0
+    for item in list:
+        if value == item:
+            count = count + 1
+    return count
+
+# test
+mylist = list(range(5))
+mylist = mylist + mylist + mylist
+print(HowManyAinB(1,mylist))  # prints 3
+
+# another test
+mylist = list('Mary had a little lamb')
+print(mylist)  # prints each individual letter as its own string
+
+# another test
+print(HowManyAinB('a', mylist))  # finding how many times a is in the string
+# prints 4
+
+#################################################################################
+
+# appending vs concatinating a list:
+# appending makes it a part of the list (the individual parts of the list are modified)
+# concatenating attachs two lists together (the individual parts of the list are NOT modified)
+# can't concatenate strings but can concatenate lists of strings with .append
+
+x = ['a','b'] + 'c'
+# returns TypeError because 'c' is a str; can't concatenate str
+
+x = ['a','b']
+x.append('c')  # this is how you add 'c' to the list
+print(x)
+# prints ['a', 'b', 'c']
+
+x = x + ['d','e']  # since x is a list you can append the two lists
+print(x)
+# prints ['a', 'b', 'c', 'd', 'e']
+
+x.append(['f','g'])  # this is appending a list within a list (lists can be different data types)
+print(x)
+# prints ['a', 'b', 'c', 'd', 'e', ['f', 'g']]
+
+x.append([1,2,3])  # appending different data types
+print(x)
+# prints ['a', 'b', 'c', 'd', 'e', ['f', 'g'], [1, 2, 3]]
+
+#################################################################################
+
+# return unduplicated list
+
+def undup(mylist):
+    emptylist = []
+    for item in mylist:
+        if item not in emptylist:
+            emptylist.append(item)
+    return emptylist
+
+mylist = (3,3,3,4,4,4)
+print(undup(mylist))
+# prints [3, 4]
+
+#################################################################################
+
+# return length, sum, and mean of mylist
+
+def numres(numericlist):
+    sum = 0
+    mean = 0
+    for item in numericlist:
+        sum = sum + item
+    mean = sum/len(numericlist)
+    return[len(numericlist), sum, mean]
+
+mylist = (1,2,3)
+print(numres(mylist))
+# prints [3, 6, 2.0]
+
+#################################################################################
+
+# code that prints number 1, letter 'b', letter 'y'
+
+xlist = [1,['a','b',['x','y']]]
+
+print(xlist[0])  # prints 1
+print(xlist[1][1])  # prints b
+print(xlist[1][2][1])  # prints y
