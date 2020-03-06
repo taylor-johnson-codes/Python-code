@@ -1,0 +1,218 @@
+# create a dictionary to record the weights of Joe (175), Tom (190), and Sally (150)
+
+weights = {"Joe":175,"Tom":190,"Sally":150}
+print(weights)
+# prints {'Joe': 175, 'Tom': 190, 'Sally': 150}
+
+# add Harry (180)
+
+weights["Harry"]=180
+print(weights)
+# prints {'Joe': 175, 'Tom': 190, 'Sally': 150, 'Harry': 180}
+
+# remove Joe
+
+del weights["Joe"]
+print(weights)
+# prints {'Tom': 190, 'Sally': 150, 'Harry': 180}
+
+# look up Sally's weight
+
+print(weights["Sally"])
+# prints 150
+
+# iterate over the items in the dictionary and calculate the sum of the weights
+
+sum=0
+for name in weights:
+    sum = sum + weights[name]
+print(sum)
+print(weights)
+# prints 520
+# {'Tom': 190, 'Sally': 150, 'Harry': 180}
+
+# use items() function to return the items in the dictionary; print rti (return the items)
+
+rti = weights.items()
+print(rti)  # prints dict_items([('Tom', 190), ('Sally', 150), ('Harry', 180)])
+print(type(weights))  # prints <class 'dict'>
+
+# you can iterate over rti
+
+for item in rti:
+    print(item)
+    print(type(item))
+
+# prints:
+# ('Tom', 190)
+# <class 'tuple'>
+# ('Sally', 150)
+# <class 'tuple'>
+# ('Harry', 180)
+# <class 'tuple'>    Tuples are covered in a different file
+
+print(rti[0])
+# returns TypeError: "object does not support indexing"
+
+# you can convert rti to a list using the list() function and use indexes
+
+rti_list = list(rti)
+print(rti_list)  # prints [('Tom', 190), ('Sally', 150), ('Harry', 180)]
+print(type(rti_list))  # prints <class 'list'>
+print(rti_list[0])  # prints ('Tom', 190)
+
+# use the key(s) function to extract my_keys from the dictionary
+
+my_keys = weights.keys()
+print(my_keys)  # prints dict_keys(['Tom', 'Sally', 'Harry'])
+print(type(my_keys))  # prints <class 'dict_keys'>
+
+for key in my_keys:
+    print(key, type(key))
+# prints:
+# Tom <class 'str'>
+# Sally <class 'str'>
+# Harry <class 'str'>
+
+print(my_keys[0])
+# this will not work because you can't use indexes in dictionaries
+
+##############################################################################
+
+# use str 'Mississippi' to count using dictionary
+
+word = "Mississippi"
+count_dict = {}  # syntax for an empty dictionary
+
+for count in word:
+    if count in count_dict:
+        count_dict[count] = count_dict[count] + 1
+    else:
+        count_dict[count] = 1
+
+for key in count_dict.keys():
+    print(key, count_dict[key])
+
+# prints:
+# M 1
+# i 4
+# s 4
+# p 2
+
+##############################################################################
+
+# use get() function (simplfied version)
+
+word = "Mississippi"
+count_dict = {}
+
+for count in word:
+    count_dict[count] = count_dict.get(count,0) + 1
+
+for key in count_dict.keys():
+    print(key, count_dict[key])
+
+# prints:
+# M 1
+# i 4
+# s 4
+# p 2
+
+##############################################################################
+
+# use get() function to count the digits in the magic number
+
+magic = str(2727130252053142514510171943)  # need to convert the number to a string
+count_dict = {}
+
+for count in magic:
+    count_dict[count] = count_dict.get(count,0) + 1
+
+for key in count_dict.keys():
+    print(key,count_dict[key])
+
+# prints:
+# 2 5
+# 7 3
+# 1 6
+# 3 3
+# 0 3
+# 5 4
+# 4 3
+# 9 1
+
+##############################################################################
+
+# modify the code so that each line of the output also includes the percentage of times the key appears
+
+magic = str(2727130252053142514510171943)
+count_dict = {}
+
+for count in magic:
+    count_dict[count] = count_dict.get(count,0) + 1
+
+for key in count_dict.keys():
+    print(key, count_dict[key], count_dict[key]/len(magic))
+
+# prints:
+# 2 5 0.17857142857142858
+# 7 3 0.10714285714285714
+# 1 6 0.21428571428571427
+# 3 3 0.10714285714285714
+# 0 3 0.10714285714285714
+# 5 4 0.14285714285714285
+# 4 3 0.10714285714285714
+# 9 1 0.03571428571428571
+
+##############################################################################
+
+# create a list called numlist of the numbers between 1-100 as strings
+
+numlist = []  # syntax for empty list
+for item in range(1,101):
+    s = str(item)
+    numlist.append(s)
+print(numlist)
+# prints the whole list of 1-100 as indiviual strings separated by commas
+
+##############################################################################
+
+# modify the code to create a list called 'fdlist' to get a list of the first digit in each item in numlist
+
+numlist = []
+fdlist = []
+for item in range(1,101):
+    s = str(item)
+    numlist.append(s)
+    fdlist.append(s[0])
+print(fdlist)
+# prints the whole list with only the first digits of the numbers 0-100 as indiviual strings separated by commas
+
+##############################################################################
+
+# modify the code to get counts and relative frequencies of the items in fdlist
+
+numlist = []
+fdlist = []
+for item in range(1,101):
+    s = str(item)
+    numlist.append(s)
+    fdlist.append(s[0])
+
+count_dict = {}
+for count in fdlist:
+    count_dict[count] = count_dict.get(count,0) + 1
+
+for key in count_dict.keys():
+    print(key, count_dict[key], count_dict[key]/len(fdlist))
+
+# prints:
+# 1 12 0.12
+# 2 11 0.11
+# 3 11 0.11
+# 4 11 0.11
+# 5 11 0.11
+# 6 11 0.11
+# 7 11 0.11
+# 8 11 0.11
+# 9 11 0.11
