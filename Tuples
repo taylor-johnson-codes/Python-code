@@ -1,0 +1,85 @@
+# tuples are items separated by commas; they don't have to be in parenthesis ()
+# lists are in brackets []; tuples are not
+
+t1=1,2,3
+t2=(1,2,3)
+print(t1)  # prints (1, 2, 3)
+print(t2)  # prints (1, 2, 3)
+print(type(t1))  # prints <class 'tuple'>
+
+# tuples use zero indexing; you can slice tuples
+
+print(t1[0])  # prints 1
+print(t1[-1])  # prints 3
+# the -1 index position is how to return the last value in the tuple/list/array
+
+# tuples can be concatenated
+
+t3 = ('a','b','c')
+print(t1+t3)
+# prints (1, 2, 3, 'a', 'b', 'c')
+
+# can't change an item in a tuple
+t1[0] = 4  # returns an error
+
+# a workaround for adding items to tuples is to put tuple items into lists and then append to the list
+
+list1 = [1,2,3]
+list2 = [4,5,6]
+mytuple = list1, list2
+print(mytuple)
+# prints ([1, 2, 3], [4, 5, 6])
+
+list1.append('a')
+print(mytuple)
+# prints ([1, 2, 3, 'a'], [4, 5, 6])
+
+
+############################################################################################################
+
+# create a fruitful tsort() function, make single parameter a tuple, make it return the tuple in sorted order
+# notes: tuples don't have a sort function; fruitful means the function needs to have return statement in it
+# test it with (5,4,12,11)
+
+def tsort(atuple):
+    mylist = list(atuple)
+    mylist.sort()
+    returnedtuple = tuple(mylist)
+    return(returnedtuple)
+
+t1=5,4,12,11
+print(tsort(t1))
+# prints (4, 5, 11, 12)
+
+############################################################################################################
+
+# can assign variable names to each tuple element; there must be exactly the same number of variables as there are values in the tuple
+
+t1 = 'a','b','c'
+print(t1)  # prints ('a', 'b', 'c')
+
+first, second, third = t1
+print(first)  # prints a
+print(second)  # prints b
+print(third)  # prints c
+
+############################################################################################################
+
+# return tuple with greatest common divisor and least common divisor
+
+def findExtremeDivisors(n1, n2):
+
+    minVal, maxVal = None, None
+
+    for i in range(2, min(n1, n2) + 1):
+        if n1%i == 0 and n2%i == 0:
+            if minVal == None or i < minVal:
+                minVal = i
+            if maxVal == None or i > maxVal:
+                maxVal = i
+
+    return (minVal, maxVal)
+
+lcd, gcd = findExtremeDivisors(27,18)
+print(lcd)  # prints 3
+print(gcd)  # prints 9
