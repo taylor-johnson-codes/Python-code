@@ -1,0 +1,364 @@
+# showing both types of set syntax work the same:
+
+newset = set([1,2,3])
+print(type(newset))  # prints <class 'set'>
+print(newset)  # prints {1, 2, 3}
+
+newset2 = {1,2,3}
+print(type(newset2))  # prints <class 'set'>
+print(newset2)  # prints
+
+print(newset == newset2)  # prints True
+
+# creating empty sets:
+# var = ([]) or var = set() is an empty set
+# remember variable = {} is an empty dictionary
+
+#######################################################################################################
+
+Aset = {"cat", "dog", "parrot"}
+Alist = ["cat", "dog", "parrot"]
+Atuple = ("cat", "dog", "parrot")
+print(type(Aset))  # prints <class 'set'>
+print(type(Alist))  # prints <class 'list'>
+print(type(Atuple))  # prints <class 'tuple'>
+
+print(Aset[0])  # returns an error because sets have no order/no indexing
+print(Alist[0])  # prints cat
+print(Atuple[0])  # prints cat
+
+for item in Aset:
+    print(item)  # prints cat, dog, parrot in random order because sets are unorganized
+print("")
+for item in Alist:
+    print(item)  # prints cat, dog, parrot in order
+print("")
+for item in Atuple:
+    print(item)  # prints cat, dog, parrot in order
+    
+Blist = ["dog","parrot","cat"]  # cat moved to the end
+Btuple = ("dog","parrot","cat")
+Bset = {"dog","parrot","cat"}
+
+print(Alist==Blist)  # prints False because indexing of variables doesn't match
+print(Atuple==Btuple)  # prints False because indexing of variables doesn't match
+print(Aset==Bset)  # prints True because they contain the same variables, there's no indexing/order in sets
+
+Clist = ["cat","dog","parrot","dog"]  # second dog added
+Ctuple = ("cat","dog","parrot","dog")
+Cset = {"cat","dog","parrot","dog"}
+
+print(Clist)  # prints ['cat', 'dog', 'parrot', 'dog']
+print(Ctuple)  # prints ('cat', 'dog', 'parrot', 'dog')
+print(Cset)  # prints {'dog', 'cat', 'parrot'}
+# the second dog doesn't print in the set because in a set it's either there or it's not there and it only prints once if it's there
+
+print(len(Clist))  # prints 4
+print(len(Ctuple))  # prints 4
+print(len(Cset))  # prints 3
+# same principle as above for set, it's either there or it's not and it only counts duplicates once
+
+#######################################################################################################
+
+# creating a dictionary and a set
+
+pets_dict = {"dog":2,"cat":1,"parrot":0}
+pets_set = {"Fido","Felix"}
+print(pets_dict)  # prints {'dog': 2, 'cat': 1, 'parrot': 0}
+print(pets_set)  # prints {'Felix', 'Fido'}
+
+# adding elements
+
+pets_dict["Python"] = 1
+pets_set.add("Cool guy")  # gets added anywhere because there's no order in sets
+print(pets_dict)  # prints {'dog': 2, 'cat': 1, 'parrot': 0, 'Python': 1}
+print(pets_set)  # prints {'Felix', 'Cool guy', 'Fido'}
+
+# remove cat
+
+pets_dict["cat"] = 0
+pets_set.discard("Felix")  # .discard doesn't give errors like .remove does
+print(pets_dict)  # prints {'dog': 2, 'cat': 0, 'parrot': 0, 'Python': 1}
+print(pets_set)  # prints {'Cool guy', 'Fido'}
+
+# sorting
+
+sorted_pets_set = sorted(pets_set)  # sorting a set turns it into a list because you can't order a set
+print(type(sorted_pets_set))  # prints <class 'list'>
+print(sorted_pets_set)  # prints ['Cool guy', 'Fido']
+
+#######################################################################################################
+
+# convert list with duplications to a list without duplications
+
+def undup(mylist):
+    return(list(set(mylist)))
+# put it into a set first to get rid of duplicates and then put it back into a list
+
+print(undup([1,1,2,3,4,4,5,1,2,6]))
+# prints [1, 2, 3, 4, 5, 6]
+
+#######################################################################################################
+
+# the set() function works with range objects
+
+I100 = set(range(1,101))
+print(I100)  # prints 1-100 in a set
+print(len(I100))  # prints 100
+print(type(I100)) # prints <class 'set'>
+
+# create a subset of even numbers
+
+Universe = I100
+Evens = set()
+for number in Universe:
+    if number%2 == 0:
+        Evens.add(number)
+
+print(Evens)
+# prints all even numbers 1-100 in a set
+
+# comprehension syntax
+
+Evens2 = {n for n in Universe if n % 2 == 0}  # {} means result will be a set; first n is object you're going to test (it's required syntax)
+print(Evens2 == Evens)  # prints True
+
+# create a subset of odd numbers
+
+Odds = {n for n in Universe if n % 2 != 0}
+print(Odds)
+# prints all odd numbers 1-100 in a set
+
+# Create the set HalfOne consisting of every number 50 or less
+
+HalfOne = {n for n in Universe if n <= 50}
+
+# Create the sets Div3, Div4, and Div5 containing the numbers divisible by 3, 4, and 5 respectively
+
+Div3 = {n for n in Universe if n % 3 == 0}
+Div4 = {n for n in Universe if n % 4 == 0}
+Div5 = {n for n in Universe if n % 5 == 0}
+
+print(Div3)
+# prints {3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96, 99}
+print(Div4)
+# prints {4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 100}
+print(Div5)
+# prints {65, 35, 100, 5, 70, 40, 10, 75, 45, 15, 80, 50, 20, 85, 55, 25, 90, 60, 30, 95}
+
+# Create and print the intersection of Div3 and Div5
+
+Div3and5 = Div3 and Div5
+print(Div3and5)
+# prints {65, 35, 100, 5, 70, 40, 10, 75, 45, 15, 80, 50, 20, 85, 55, 25, 90, 60, 30, 95}
+
+Div3and5 = Div3 & Div5  # the & sign is the mathmatical operator for intersection
+print(Div3and5)
+# prints {75, 45, 15, 90, 60, 30}
+
+# print the union of Div3 and Div5; the | sign is the mathmatical operator for union
+
+Div3or5 = Div3 | Div5
+print(Div3or5)
+# prints {3, 5, 6, 9, 10, 12, 15, 18, 20, 21, 24, 25, 27, 30, 33, 35, 36, 39, 40, 42, 45, 48, 50, 51, 54, 55, 57, 60, 63, 65, 66, 69, 70, 72, 75, 78, 80, 81, 84, 85, 87, 90, 93, 95, 96, 99, 100}
+
+# print the set difference of Div3 and Div5; difference means subtract
+
+Div3minus5 = Div3 - Div5
+print(Div3minus5)  # eliminated elements that are both divisable by 3 and 5
+# prints {3, 6, 9, 12, 18, 21, 24, 27, 33, 36, 39, 42, 48, 51, 54, 57, 63, 66, 69, 72, 78, 81, 84, 87, 93, 96, 99}
+
+# print the symmetric difference of Div3 and Div5; union of two sets... in div3 but not in div5... things in one of two sets but not both
+
+DivOneOf3and5 = Div3 ^ Div5
+print(DivOneOf3and5)
+# prints {3, 5, 6, 9, 10, 12, 18, 20, 21, 24, 25, 27, 33, 35, 36, 39, 40, 42, 48, 50, 51, 54, 55, 57, 63, 65, 66, 69, 70, 72, 78, 80, 81, 84, 85, 87, 93, 95, 96, 99, 100}
+
+# since Python doesn't have a complement function, take the difference of the known universe to get the complement
+# testing to see if complement of Evens is Odds:
+
+def compare(parameter):
+    return Universe - parameter
+
+print(compare(Evens) == Odds)
+# prints True
+
+# the theory of boolean algebra says that for any sets, A, B, and C, the following is true:
+# A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)
+# show that this is true for an example using Div3, Div4 and Div5
+
+leftside = Div3 | (Div4 & Div5)
+rightside = (Div3 | Div4) & (Div3 | Div5)
+print(leftside == rightside)
+# prints True
+
+#######################################################################################################
+
+# print all possible four letter words from "stop"
+
+myword = "stop"
+for let1 in myword:
+    for let2 in myword:
+        for let3 in myword:
+            for let4 in myword:
+                print(let1+let2+let3+let4, end = ", ")
+# use end in print statement instead of default invisible \n so each word doesn't print on its own line
+# prints 256 random four letter words; the words aren't stored in anything
+
+#######################################################################################################
+
+# printing and storing the words in an array:
+
+words = []
+for let1 in "stop":
+    for let2 in "stop":
+        for let3 in "stop":
+            for let4 in "stop":
+                word = let1+let2+let3+let4
+                words.append(word)
+print(words)
+# prints 256 random four letter words in an array
+
+len(words)
+# prints 256
+
+#######################################################################################################
+
+# finding out which of the 256 words are actual English words
+
+import enchant
+engdict = enchant.Dict('en_US')
+
+engwords = []
+for w in words:
+    if engdict.check(w):
+        engwords.append(w)
+print(engwords)  # prints 18 words in an array
+len(engwords)  # prints 18
+
+#######################################################################################################
+
+# adding constraint: a letter can occur only once in a string
+
+words = []
+for let1 in "stop":
+    for let2 in "stop":
+        for let3 in "stop":
+            for let4 in "stop":
+                word = let1+let2+let3+let4
+                count = 0
+                for i in "stop":
+                    if i in word:
+                        count = count + 1
+                    if count == 4:
+                        words.append(word)
+print(words)  # prints 24 random words in an array
+print(len(words))  # prints 24
+
+# alternative way of doing the same thing
+
+words2 = []
+wordset = set(list("stop"))
+for let1 in wordset:
+    for let2 in wordset - {let1}:
+        for let3 in wordset - {let1, let2}:
+            for let4 in wordset - {let1, let2, let3}:
+                word = let1 + let2 + let3 + let4
+                words2.append(word)
+print(words2)  # prints 24 random words in an array
+print(len(words2))  # prints 24
+
+# convert the lists to sets to check for equivlency
+
+set(words) == set(words2)
+# prints True
+
+#######################################################################################################
+
+# using set instead of list
+
+newwords = set()
+
+for let1 in "stop":
+    for let2 in "stop":
+        for let3 in "stop":
+            for let4 in "stop":
+                newword = let1+let2+let3+let4
+                newwords.add(newword)  # needs to be .add for a set (.append for a list)
+print(newwords)  # prints 256 random words in a set (curly braces is the syntax for a set)
+len(newwords)  # prints 256
+
+#######################################################################################################
+
+# test if p and t are next to each other in any words
+
+code = ['pt', 'tp']
+myword = "stop"
+
+for let1 in myword:
+    for let2 in myword:
+        for let3 in myword:
+            for let4 in myword:
+                if let1+let2 in code or let2+let3 in code or let3+let4 in code:
+                    print(let1+let2+let3+let4, end = ", ")
+# prints out about 100 random words
+
+#######################################################################################################
+
+# any data type can be added to a set
+
+newset = set([1,2,3])
+print(newset)
+# prints {1, 2, 3}
+
+newset.add("Taylor")
+print(newset)
+# prints {1, 2, 3, 'Taylor'}
+
+# even though it looks like it's outputing in order, sets aren't in any order
+
+#######################################################################################################
+
+# pretend key primaries are held in NH, MN, WI, and CA. Candidate A enters all, Cand B enters all but NH, and Cand C all but WI
+# list all possible outcomes
+
+poss = []
+i = 0
+for NH in "AC":
+    for MN in "ABC":
+        for WI in "AB":
+            for CA in "ABC":
+                i += 1
+                outcome = (i,NH,MN,WI,CA)
+                poss.append(outcome)
+for i in poss:
+    print(i)
+
+# prints 36 tuples in order of all possible outcomes
+
+#######################################################################################################
+
+# convert the list to a set called universe and print
+
+universe = set(poss)
+for i in universe:
+    print(i)
+
+# the 36 sets are printed in no particular order
+
+#######################################################################################################
+
+# Write a function counter(cand,outcome) which returns the count of a candidate’s win in a particular outcome
+
+def counter(cand, outcome):
+    count = 0
+    for winner in outcome:
+        if winner == cand:
+            count += 1
+    return count
+
+# Tests
+print(counter("B", (14, 'A', 'C', 'A', 'B')))  # prints 1
+print(counter("C", (3, 'A', 'A', 'A', 'C')))  # prints 1
+print(counter("B", (3, 'A', 'A', 'A', 'C')))  # prints 0
+print(counter("A", (3, 'A', 'A', 'A', 'C')))  # prints 3
