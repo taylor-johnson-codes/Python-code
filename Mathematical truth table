@@ -1,0 +1,95 @@
+# basic truth table:
+# P   Q
+# T   T
+# T   F
+# F   T
+# F   F
+
+# ^ AND
+# v OR
+# ~ NOT
+
+##################################################################################################
+
+# function for ~(~P^Q)
+
+def ex1(P, Q):
+    return not(not P and Q)
+
+print(ex1(True, True))  # put in whatever T/F parameters you want
+# prints True
+
+##################################################################################################
+
+# double nested iteration over list of T/F; in last iteration print P, Q, and result of function
+
+def ex1(P, Q):
+    return not(not P and Q)
+
+truthVals = [True,False]
+
+for P in truthVals:
+        for Q in truthVals:
+            print(P, Q, ex1(P, Q))
+
+# prints:
+# True True True
+# True False True
+# False True False
+# False False True
+
+##################################################################################################
+
+# function for [~(PvQ)^(~Pv~Q)]
+
+def ex2(p,q):
+    p1 = not (p or q)
+    p2 = not p or not q
+    wholething = p1 and p2
+    return wholething
+
+truthVals = [True,False]  # copy/pasted this down from above and updated to ex2 instead of ex1
+
+for P in truthVals:
+        for Q in truthVals:
+            print(P, Q, ex2(P, Q))
+
+# prints:
+# True True False
+# True False False
+# False True False
+# False False True
+
+##################################################################################################
+
+# ~(P^~Q)
+# Implies (P,Q)
+# Returns P->Q truth table
+
+def implies(P,Q):
+    return not (P and not Q)
+
+tt = [True,False]
+for P in tt:
+    for Q in tt:
+        print(P,Q,implies(P,Q))
+
+# prints
+# True True True
+# True False False
+# False True True
+# False False True
+
+##################################################################################################
+
+# show that ~(PvQ) and ~P^~Q are equivalent
+
+def ex3(P,Q):
+    return not(P or Q)
+
+def ex4(P,Q):
+    return not P and not Q
+
+print(ex3(True,True) == ex4(True,True))
+# prints True
+# (or you could print out each truth table for ex3 and ex4 and visually see they are identical)
