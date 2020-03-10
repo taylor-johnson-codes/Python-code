@@ -1,0 +1,118 @@
+# length minus 1 tells you the highest power to go to
+# '1011' is a binary number (base 2) in string format
+
+degree = len('1101') - 1
+print(degree)
+# prints 3 telling you the first number in the string is at the 2^3 position (then 2^2, 2^1, 2^0)
+
+##################################################################################################
+
+# using int() function to covert binary (base 2) string to decimal value (base 10)
+
+print(int('1101', base = 2))
+# prints 13
+
+##################################################################################################
+
+# convert binary string to decimal value with a while loop
+
+bi_string = '1101'
+length = len(bi_string)
+exponent = length - 1
+index = 0
+result = 0
+
+while index <= length - 1:
+    result = result + int(bi_string[index]) * 2**exponent
+    exponent = exponent - 1
+    index = index + 1
+print(result)  # prints 13
+
+##################################################################################################
+
+# convert binary string to decimal value with a for loop
+
+bi_string = '1101'
+length = len(bi_string)
+exponent = length - 1
+index = 0
+result = 0
+
+for index in range(length):
+    exponent = length - 1 - index
+    result = result + int(bi_string[index]) * 2**exponent
+print(result)  # prints 13
+
+##################################################################################################
+
+# convert hexadecimal to decimal value
+
+hd = {'0':0,
+      '1':1,
+      '2':2,
+      '3':3,
+      '4':4,
+      '5':5,
+      '6':6,
+      '7':7,
+      '8':8,
+      '9':9,
+      'A':10,
+      'B':11,
+      'C':12,
+      'D':13,
+      'E':14,
+      'F':15}
+
+s = 'A5AF'
+length = len(s)
+result = 0
+for index in range(length):
+    exponent = length - 1 - index
+    result = result + hd[s[index]] * 16**exponent
+print(result)
+# prints 42415
+
+##################################################################################################
+
+# use int() function to do the same thing
+
+s = 'A5AF'
+int(s, base = 16)
+# prints 42415
+
+##################################################################################################
+
+# determine the highest power of 2 we need to convert from decimal to binary
+
+deci = 8
+power = 0
+while 2**power <= deci:
+    power = power + 1
+highest = power - 1
+print(highest)
+# prints 3
+
+##################################################################################################
+
+# convert decimal to binary
+
+deci = 16
+power = 0
+while 2**power <= deci:
+    power = power + 1
+highest = power - 1
+
+binary = ''
+power = highest
+left_to_do = deci
+while left_to_do > 0:
+    contrib = left_to_do//2**power
+    left_to_do = left_to_do - contrib*2**power
+    binary = binary + str(contrib)
+    power = power - 1
+while power >= 0:  # sticking zeros on output string so it doesn't just print 1 and quit
+    power = power - 1
+    binary = binary + '0'
+print(binary)
+# prints (10000)
