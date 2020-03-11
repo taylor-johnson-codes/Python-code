@@ -1,15 +1,15 @@
 print("Hello World")
-# outputs Hello World
+# prints Hello World
 
 ########################################################################
 
-2+5  # outputs 7
-2 + 5  # outputs 7; spacing doesn't matter
+2+5  # prints 7
+2 + 5  # prints 7; spacing doesn't matter
 
 ########################################################################
 
 x=5
-print(x)  # outputs 5
+print(x)  # prints 5
 
 ########################################################################
 
@@ -17,7 +17,7 @@ x=5
 y=x
 print(id(x))
 print(id(y))
-# outputs the same object-oriented reference number; 5 is the object and both x and y point to that object ID number
+# prints the same object-oriented reference number; 5 is the object and both x and y point to that object ID number
 
 ########################################################################
 
@@ -25,7 +25,7 @@ m=300
 n=300
 print(id(m))
 print(id(n))
-# outputs two different reference ID numbers because there are two different objects
+# prints two different reference ID numbers because there are two different objects
 
 ########################################################################
 
@@ -35,19 +35,19 @@ c=-5
 d=-5
 print(id(c))
 print(id(d))
-# outputs same reference ID numbers
+# prints same reference ID numbers
 
 e=256
 f=256
 print(id(e))
 print(id(f))
-# outputs same reference ID numbers
+# prints same reference ID numbers
 
 g=257
 h=257
 print(id(g))
 print(id(h))
-# outputs two different reference ID numbers
+# prints two different reference ID numbers
 
 ########################################################################
 
