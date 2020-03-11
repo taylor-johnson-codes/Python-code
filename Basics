@@ -3,13 +3,61 @@ print("Hello World")
 
 ########################################################################
 
-2+5  # prints 7
-2 + 5  # prints 7; spacing doesn't matter
+# Python implicitly knows the data type
+
+x = "123"
+print(type(x))
+# prints <class 'str'> because it's in quotes
+
+y = 123
+print(type(y))
+# prints <class 'int'> because it doesn't have a decimal point
+
+z = 123.0
+print(type(z))
+# prints <class 'float'> because it has a decimal point
+
+########################################################################
+
+# you can explicitly change the data type
+
+x="123"
+x=float(x)
+print(type(x))
+print(x)
+# prints <class 'float'> and 123.0
+
+y=123
+y=str(y)
+print(type(y))
+print(y)
+# prints <class 'str'> and 123
+
+z=123.0
+z=int(z)
+print(type(z))
+print(z)
+# prints <class 'int'> and 123
+
+########################################################################
+
+# don't put commas in numbers
+
+x = 1,000,000
+print(type(x))
+print(x)
+# prints <class 'tuple'> and (1, 0, 0)
+# tuples are covered in a separate file
+
+########################################################################
+
+2+5  # returns 7
+2 + 5  # returns 7 (spacing doesn't matter)
 
 ########################################################################
 
 x=5
-print(x)  # prints 5
+print(x)  # returns 5
 
 ########################################################################
 
@@ -83,3 +131,27 @@ type(6==3*3)  # returns bool to show the return data type is Boolean
 2+3*4  # returns 14 which is correct
 -1**2  # returns -1 which is incorrect (** is syntax for raising to a power)
 (-1)**2  # returns 1 which is correct
+
+########################################################################
+
+# getting input from user
+
+age = input('How old are you?')
+print(age)  # prints the number the user entered
+print(type(age))  # prints <class 'str'> because all user input is initially a string data type
+age = float(age)  # coverting user string data into the float data type
+print(type(age))  # prints <class 'float'>
+
+# same thing with less code:
+
+age = float(input('How old are you? '))  # float conversion method moved here
+print(age)  # prints what the user entered
+print(type(age))  # prints <class 'float'>
+
+########################################################################
+
+# examples of illegal variable names:
+
+# 76things (because a variable can't start with a number)
+# more@ (because a variable can't have a symbol)
+# class (because a variable can't be one of the 33 reserved keywords)
