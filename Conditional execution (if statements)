@@ -52,7 +52,7 @@ if cond1:
     print("Point A")  # doesn't print
 elif cond2:
     print("Point B")  # prints
-    print("Point C")  # doesn't print because when it finds the action to print Point B it skips the rest of the statement and moves onto the next statement
+    print("Point C")  # doesn't print; when it finds the action to print Point B it skips the rest of the statement
 print("Point D")  # prints no matter what because it's outside of the if statement
 
 ##########################################################################################
@@ -88,7 +88,7 @@ print("Point E")  # prints no matter what because it's outside of the if stateme
 
 ##########################################################################################
 
-# Grade conversion from number to letter with if statements
+# Getting number grade from user and coverting number to letter grade with if statements
 
 try:
     num_grade=input("What is your number grade?")
