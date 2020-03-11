@@ -115,3 +115,25 @@ print(ex1(False,True,False))
 # Point B
 # Point E
 # None
+
+##########################################################################################
+
+# Create a function named summer(n). Its single parameter is a positive integer. 
+# The function returns the sum of all the integers between 1 and n inclusive which are multiples of 3 or 5. 
+# Test it with the input values 10, 150, and 975.
+
+def summer(n):
+    sum = 0
+    for item in range(1, n+1):  
+    # range needs to be between 1 and n; range goes up to but not including the number so + 1 is needed to include the last number in the range
+        if item%3 == 0 or item%5 == 0:  
+        # the function is now picking out which numbers in the range that are multiples of 3 or 5; it'll have a remainder of 0 if it's a multiple
+            sum = sum + item  
+            # the function is now adding together the numbers in the range that are multiples of 3 or 5
+    return sum  
+    # the fuction is returning a value; it's a fruitful function
+
+# test with:
+print(summer(10))  # prints 33
+print(summer(150))  # prints 5325
+print(summer(975))  # prints 222300
