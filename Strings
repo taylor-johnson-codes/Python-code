@@ -57,7 +57,7 @@ while position < length:
 
 ############################################################
 
-# doing the same wtih a for loop (more simplified than the while loop)
+# doing the same with a for loop (more simplified than the while loop)
 
 myname = "Taylor Johnson"
 for letter in myname:
